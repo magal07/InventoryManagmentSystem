@@ -56,5 +56,10 @@ namespace InventoryManagmentSystem
         {
             openChildForm(new OrderForm());
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
