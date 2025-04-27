@@ -163,6 +163,7 @@ namespace InventoryManagmentSystem
             this.btnCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCategory.TabIndex = 11;
             this.btnCategory.TabStop = false;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
             // btnCustomer
             // 
@@ -197,9 +198,9 @@ namespace InventoryManagmentSystem
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(69, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 32);
+            this.label1.Size = new System.Drawing.Size(104, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "demy";
+            this.label1.Text = "system";
             // 
             // label2
             // 
@@ -253,6 +254,7 @@ namespace InventoryManagmentSystem
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

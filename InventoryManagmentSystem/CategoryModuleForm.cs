@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace InventoryManagmentSystem
 {
-    public partial class CustomerModuleForm : Form
+    public partial class CategoryModuleForm : Form
     {
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Marcelo\Documents\dbIMS.mdf;Integrated Security=True;Connect Timeout=30");
         SqlCommand cm = new SqlCommand();
 
-        public CustomerModuleForm()
+        public CategoryModuleForm()
         {
             InitializeComponent();
         }
@@ -25,20 +25,19 @@ namespace InventoryManagmentSystem
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to save this customer?", "Saving Record",
+                if (MessageBox.Show("Are you sure you want to save this category?", "Saving Record",
                                             MessageBoxButtons.YesNo,
                                             MessageBoxIcon.Question) ==
                                             DialogResult.Yes)
                 {
 
-                    cm = new SqlCommand("INSERT INTO tbCustomer(cname,cphone)VALUES(@cname,@cphone)", con);
-                    cm.Parameters.AddWithValue("@cname", txtCName.Text);
-                    cm.Parameters.AddWithValue("@cphone", txtCPhone.Text);
+                    cm = new SqlCommand("INSERT INTO tbCategory(catname)VALUES(@catname)", con);
+                    cm.Parameters.AddWithValue("@catname", txtCatName.Text);
 
                     con.Open();
                     cm.ExecuteNonQuery();
                     con.Close();
-                    MessageBox.Show("User has been successfully saved.");
+                    MessageBox.Show("Category has been successfully saved.");
                     Clear();
                 }
             }
@@ -47,17 +46,14 @@ namespace InventoryManagmentSystem
                 MessageBox.Show(ex.Message);
             }
         }
-
         public void Clear()
         {
-            txtCName.Clear();
-            txtCPhone.Clear();
+            txtCatName.Clear();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             Clear();
-            txtCPhone.Clear();
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
         }
@@ -71,18 +67,17 @@ namespace InventoryManagmentSystem
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to update this Customer?", "Update Record",
+                if (MessageBox.Show("Are you sure you want to update this Category?", "Update Record",
                                             MessageBoxButtons.YesNo,
                                             MessageBoxIcon.Question) ==
                                             DialogResult.Yes)
                 {
-                    cm = new SqlCommand("UPDATE tbCustomer SET cname = @cname,cphone=@cphone WHERE cid LIKE '" + lblCId.Text + "' ", con);
-                    cm.Parameters.AddWithValue("@cname", txtCName.Text);
-                    cm.Parameters.AddWithValue("@cphone", txtCPhone.Text);
+                    cm = new SqlCommand("UPDATE tbCategory SET catname = @catname WHERE catid LIKE '" + lblCatId.Text + "' ", con);
+                    cm.Parameters.AddWithValue("@catname", txtCatName.Text);
                     con.Open();
                     cm.ExecuteNonQuery();
                     con.Close();
-                    MessageBox.Show("Customer has been successfully updated!.");
+                    MessageBox.Show("Category has been successfully updated!.");
                     this.Dispose();
                 }
             }
@@ -91,5 +86,6 @@ namespace InventoryManagmentSystem
                 MessageBox.Show(ex.Message);
             }
         }
+
     }
 }
