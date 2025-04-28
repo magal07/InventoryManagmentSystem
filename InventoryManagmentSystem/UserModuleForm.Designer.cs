@@ -51,7 +51,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(160)))));
             this.panel1.Controls.Add(this.pictureBoxClose);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -144,6 +144,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(497, 21);
             this.txtPass.TabIndex = 2;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // txt
             // 
@@ -221,6 +222,7 @@
             this.txtRepass.Name = "txtRepass";
             this.txtRepass.Size = new System.Drawing.Size(497, 21);
             this.txtRepass.TabIndex = 3;
+            this.txtRepass.UseSystemPasswordChar = true;
             // 
             // label5
             // 
