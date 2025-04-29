@@ -8,16 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace InventoryManagmentSystem
 {
     public partial class UserModuleForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Marcelo\Documents\dbIMS.mdf;Integrated Security=True;Connect Timeout=30");
+        private string connectionString;
+        SqlConnection con;
         SqlCommand cm = new SqlCommand();
         public UserModuleForm()
         {
             InitializeComponent();
+            connectionString = ConfigurationManager.ConnectionStrings["InventoryManagementSystemConnectionString"].ConnectionString;
+            con = new SqlConnection(connectionString);
         }
 
         private void pictureBoxClose_Click(object sender, EventArgs e)

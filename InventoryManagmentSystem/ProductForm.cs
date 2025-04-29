@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -14,12 +15,16 @@ namespace InventoryManagmentSystem
 
     public partial class ProductForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Marcelo\Documents\dbIMS.mdf;Integrated Security=True;Connect Timeout=30");
+        private string connectionString;
+        SqlConnection con;
         SqlCommand cm = new SqlCommand();
         SqlDataReader dr;
         public ProductForm()
         {
             InitializeComponent();
+            connectionString = ConfigurationManager.ConnectionStrings["InventoryManagementSystemConnectionString"].ConnectionString;
+            con = new SqlConnection(connectionString);
+
             LoadProduct();
         }
         public void LoadProduct()

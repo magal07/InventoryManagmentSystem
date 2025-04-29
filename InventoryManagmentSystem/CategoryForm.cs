@@ -8,18 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace InventoryManagmentSystem
 {
     public partial class CategoryForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Marcelo\Documents\dbIMS.mdf;Integrated Security=True;Connect Timeout=30");
+        private string connectionString;
+        SqlConnection con;
         SqlCommand cm = new SqlCommand();
         SqlDataReader dr;
 
         public CategoryForm()
         {
             InitializeComponent();
+            connectionString = ConfigurationManager.ConnectionStrings["InventoryManagementSystemConnectionString"].ConnectionString;
+            con = new SqlConnection(connectionString);
             LoadCategory();
         }
         public void LoadCategory()
